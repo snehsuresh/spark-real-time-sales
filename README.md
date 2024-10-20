@@ -1,8 +1,10 @@
  
-![Architecture Diagram](https://github.com/DivineSamOfficial/SmartCityProject/blob/main/Analysis-1.png)
+
 # Smart City End to End Real-Time Data Streaming Pipeline
 
 ## Project Overview
+
+![Architecture Diagram](https://github.com/DivineSamOfficial/SmartCityProject/blob/main/Analysis-1.png)
 
 This project aims to create a comprehensive real-time data streaming pipeline for a Smart City initiative. It captures and processes real-time data from a vehicle traveling from London to Birmingham, including vehicle data, GPS data, emergency incidents, weather conditions, and camera footage. The pipeline leverages a combination of IoT devices, Apache Kafka, Apache Spark, Docker, and AWS services to ensure efficient data ingestion, processing, storage, and visualization.
 
