@@ -4,13 +4,13 @@
 
 ## Project Overview
 
-![Architecture Diagram](https://github.com/DivineSamOfficial/SmartCityProject/blob/main/Analysis-1.png)
+![Architecture Diagram](https://github.com/snehsuresh/spark-smartcity-pipeline/blob/main/Analysis-1.png)
 
 This project aims to create a comprehensive real-time data streaming pipeline for a Smart City initiative. It captures and processes real-time data from a vehicle traveling from London to Birmingham, including vehicle data, GPS data, emergency incidents, weather conditions, and camera footage. The pipeline leverages a combination of IoT devices, Apache Kafka, Apache Spark, Docker, and AWS services to ensure efficient data ingestion, processing, storage, and visualization.
 
 ## Architecture Overview
 
-![Architecture Diagram](https://github.com/DivineSamOfficial/SmartCityProject/blob/main/SystemArchitechture.png)
+![Architecture Diagram](https://github.com/snehsuresh/spark-smartcity-pipeline/blob/main/SystemArchitechture.png)
 
 ## Technologies Used
 
