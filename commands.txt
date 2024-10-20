@@ -1,2 +1,12 @@
 Deleting topics:
 kafka-topics --delete --topic emergency_data --bootstrap-server broker:29092
+
+Move data catalog loaded into Glue to Redshift
+create external schema dev_smartcity
+    from data catalog
+    database smartcity
+    iam_role "arn of associated iam role"
+    region "us-east-1"
+
+View data
+select * from dev_smartcity.gps_data
