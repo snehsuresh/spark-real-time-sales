@@ -7,8 +7,8 @@ import uuid
 from datetime import datetime, timedelta
 import time
 
-MUMBAI_COORDINATES = {"latitude": 19.0760, "longitude": 72.8777}
-COCHIN_COORDINATES = {"latitude": 9.9312, "longitude": 76.2673}
+MUMBAI_COORDINATES = {"latitude": 51.5074, "longitude": -0.1278}
+COCHIN_COORDINATES = {"latitude": 52.4862, "longitude": -1.8904}
 
 
 # calculate movement increments
@@ -27,7 +27,7 @@ TRAFFIC_TOPIC = os.getenv("TRAFFIC_TOPIC", "traffic_data")
 WEATHER_TOPIC = os.getenv("WEATHER_TOPIC", "weather_data")
 EMERGENCY_TOPIC = os.getenv("EMERGENCY_TOPIC", "emergency_data")
 
-
+random.seed(42)
 start_time = datetime.now()
 start_location = MUMBAI_COORDINATES.copy()
 
@@ -75,7 +75,7 @@ def generate_gps_data(vehicle_id, timestamp, vehicle_type="private"):
         "vehicle_id": vehicle_id,
         "timestamp": timestamp,
         "speed": random.uniform(0, 40),  # km/h
-        "direction": "North-East",
+        "direction": "North-South",
         "vehicleType": vehicle_type,
     }
 
@@ -122,7 +122,7 @@ def generate_vehicle_data(vehicle_id):
         "timestamp": get_next_time().isoformat(),
         "location": (location["latitude"], location["longitude"]),
         "speed": random.uniform(10, 40),
-        "direction": "North-East",
+        "direction": "North-South",
         "make": "Kia",
         "model": "Seltos",
         "year": 2024,
@@ -155,6 +155,10 @@ def produce_data_to_kafka(producer, topic, data):
 
 
 def simulate_journey(producer, device_id):
+    # Set a threshold for reaching Cochin
+    target_latitude = COCHIN_COORDINATES["latitude"]
+    target_longitude = COCHIN_COORDINATES["longitude"]
+
     while True:
         vehicle_data = generate_vehicle_data(device_id)
         gps_data = generate_gps_data(device_id, vehicle_data["timestamp"])
@@ -171,11 +175,17 @@ def simulate_journey(producer, device_id):
             device_id, vehicle_data["timestamp"], vehicle_data["location"]
         )
 
+        # Print vehicle's current location
+        print(
+            f"Current Location: {vehicle_data['location']}, Speed: {vehicle_data['speed']} km/h"
+        )
+
+        # Check if the vehicle has reached Cochin
         if (
-            vehicle_data["location"][0] >= COCHIN_COORDINATES["latitude"]
-            and vehicle_data["location"][1] <= COCHIN_COORDINATES["longitude"]
+            vehicle_data["location"][0] >= target_latitude
+            and vehicle_data["location"][1] <= target_longitude
         ):
-            print("Vehicle has reached Birmingham. Simulation ending...")
+            print("Vehicle has reached Cochin. Simulation ending...")
             break
 
         produce_data_to_kafka(producer, VEHICLE_TOPIC, vehicle_data)

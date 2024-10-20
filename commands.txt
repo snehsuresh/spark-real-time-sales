@@ -1,0 +1,2 @@
+Deleting topics:
+kafka-topics --delete --topic emergency_data --bootstrap-server broker:29092
