@@ -107,16 +107,3 @@ The dashboard created in Amazon QuickSight includes the following visualizations
 ## Conclusion
 
 This project demonstrates the power of modern data engineering tools to handle complex, real-time data streams and deliver actionable insights for Smart City initiatives. The use of AWS services ensures scalability, reliability, and ease of data management, making it an excellent example of an end-to-end data streaming pipeline.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Thanks to the open-source community for providing the tools and libraries used in this project.
-- Special thanks to my team and mentors for their support and guidance.
-
-```
-
-This `README.md` provides a clear and detailed overview of the project, including the technologies used, workflow, setup instructions, and visualizations created in Amazon QuickSight. Adjust any specifics like the repository URL, architecture diagram path, and other details as needed.
